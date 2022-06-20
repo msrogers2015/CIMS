@@ -1,6 +1,5 @@
 import tkinter as tk
 import scr.gui.login as glogin
-import scr.gui.window as gwindow
 
 class App(tk.Frame):
     def __init__(self, root=None):
