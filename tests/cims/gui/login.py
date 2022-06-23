@@ -1,28 +1,26 @@
 import tkinter as tk
 import json
-from commands import login as cl
-from gui import signup
-from tkinter import messagebox
+from database.commands import login as cl
+
 
 class Login(tk.Frame):
     def __init__(self, root=None):
-        # Load json file
-        self.data = None
-        self.fonts = None
-        with open('cims/data/data.json') as f:
-            self.data = json.load(f)
-            self.fonts = self.data['fonts']
-        # Load app window
+        # Load json data
+        data_json = open("cims/information/data.json")
+        self.data = json.load(data_json)
+        self.fonts = self.data["fonts"]
+        data_json.close()
         super().__init__(root)
+        # Creating root association
         self.root = root
-        # Update window name and size
-        self.root.geometry('600x300')
-        self.root.title('CIMS Login')
+        # Updating window information
+        self.root.geometry("600x300")
+        self.root.title("CIMS Login")
+        # Create frame for current gui
         self.login_frame = tk.Frame(self.root)
-        self.login_frame.pack(expand=True, fill='both')
+        self.login_frame.pack(expand=True, fill="both")
         # Import commands
         self.cl = cl.Login(self.root, self.login_frame)
-        self.signup = signup.Signup(self.root)
         self.create_window()
 
     def create_window(self):
@@ -64,13 +62,12 @@ class Login(tk.Frame):
         self.sign_btn = tk.Button(
             self.login_frame,
             text="Sign Up",
-            font=tuple(self.fonts["button"]),
-            command =lambda: self.signup.create_window())
+            font=tuple(self.fonts["button"])
+        )
         self.forgot_btn = tk.Button(
             self.login_frame,
             text="Forgot Password",
-            font=tuple(self.fonts["button"]),
-            command= lambda: self.forgot_password()
+            font=tuple(self.fonts["button"])
         )
         # Placing Widgets
         # Labels
@@ -85,7 +82,4 @@ class Login(tk.Frame):
         self.login_btn.place(x=75, y=190, width=85, height=30)
         self.sign_btn.place(x=205, y=190, width=90, height=30)
         self.forgot_btn.place(x=345, y=190, width=175, height=30)
-
-    def forgot_password(self):
-        messagebox.showinfo('Forgot Password',
-            'Contact your employeer for a password reset')
+        

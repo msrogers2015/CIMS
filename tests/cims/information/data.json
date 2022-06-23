@@ -1,0 +1,10 @@
+{
+    "title" : "Complete Inventory Management System",
+    "version" : "0.1.0a",
+    "fonts" : {
+        "title" : ["Helvetica", "22"],
+        "label" : ["Helvetica", "16"],
+        "button" : ["Helvetica", "14"],
+        "notes" : ["Helvetica", "12"]
+    }
+}
