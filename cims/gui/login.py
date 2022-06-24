@@ -88,4 +88,4 @@ class Login(tk.Frame):
 
     def forgot_password(self):
         messagebox.showinfo('Forgot Password',
-            'Contact your employeer for a password reset')
+            'Contact your employer for a password reset')

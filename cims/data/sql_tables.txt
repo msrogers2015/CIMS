@@ -1,0 +1,8 @@
+CREATE TABLE employees (
+    eid PRIMARY_KEY INTEGER,
+    fname TEXT,
+    lname TEXT,
+    pwd TEXT,
+    salt TEXT
+);
+
