@@ -20,14 +20,17 @@ class Login:
         self.menu = menu.Menu(self.root, self.login_window)
     
     def hash_password(self, passwrd: str, e_id: str, salt: str):
-        # Input your hasing code here
-        pass
+        password_to_hash = e_id + passwrd + salt
+        password_byte = bytes(password_to_hash, 'utf-8')
+        hash = hashlib.sha256()
+        hash.update(password_byte)
+        hash.digest()
+        return hash.hexdigest()
 
 
-    def login(self, username, passwrd, event=None):
+    def login(self, username, passwrd):
         try:
             # Variables
-            passwrd = str(passwrd)
             e_id = str(username)
             # Connect to database
             conn = sqlite3.connect(self.db)
@@ -46,6 +49,6 @@ class Login:
                 self.menu.create_window()
             else:
                 messagebox.showerror('Bad Information', 'Incorrect password or username entered. Please try again')
-        except TypeError:
+        except TypeError as e:
             messagebox.showerror('Bad Information','Please check username and or password.')
 

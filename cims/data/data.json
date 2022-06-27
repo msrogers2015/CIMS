@@ -5,10 +5,11 @@
         "title" : ["Helvetica", "22"],
         "label" : ["Helvetica", "16"],
         "button" : ["Helvetica", "14"],
-        "notes" : ["Helvetica", "12"]
+        "notes" : ["Helvetica", "12"],
+        "text" : ["Helvetica", "14"]
     },
     "database" : {
-        "location" : "",
+        "location" : "C:\\Users\\msrog\\Documents\\Python\\CIMS\\cims\\data\\cims.db",
         "user" : "username",
         "pwd" : "password"
     }
