@@ -1,5 +1,6 @@
 import tkinter as tk
 import json
+from gui import materials
 
 class Menu(tk.Frame):
     def __init__(self, root=None, login_frame=None):
@@ -11,19 +12,11 @@ class Menu(tk.Frame):
         super().__init__(root)
         self.login_frame = login_frame
         self.root = root
-        
-    def create_window(self):
-        # Update window
-        self.root.geometry("600x800")
-        self.root.title("CIMS")
-        # Clear frame
-        for widget in self.login_frame.winfo_children():
-            widget.destroy()
-        # Labels
-        self.title = tk.Label(self.root, text=self.data["title"], font=tuple(self.fonts["title"]))
-        self.version = tk.Label(self.root, text=self.data["version"], font=tuple(self.fonts["notes"]))
+        self.materials = materials.Materials(self.root)
         # Buttons
-        self.materials_btn = tk.Button(self.root, text="Materials", font=tuple(self.fonts["button"]))
+        self.materials_btn = tk.Button(self.root, text="Materials",
+            font=tuple(self.fonts["button"]),
+            command=lambda: self.materials.create_window())
         self.formulas_btn = tk.Button(self.root, text="Formulas", font=tuple(self.fonts["button"]))
         self.inventory_btn = tk.Button(self.root, text="Inventory", font=tuple(self.fonts["button"]))
         self.returns_btn = tk.Button(self.root, text="Returns", font=tuple(self.fonts["button"]))
@@ -35,6 +28,18 @@ class Menu(tk.Frame):
         self.reports_btn = tk.Button(self.root, text="Reports", font=tuple(self.fonts["button"]))
         self.settings_btn = tk.Button(self.root, text="Settings", font=tuple(self.fonts["button"]))
         self.support_btn = tk.Button(self.root, text="Support", font=tuple(self.fonts["button"]))
+        
+    def create_window(self):
+        # Update window
+        self.root.geometry("600x800")
+        self.root.title("CIMS")
+        # Clear frame
+        for widget in self.login_frame.winfo_children():
+            widget.destroy()
+        # Labels
+        self.title = tk.Label(self.root, text=self.data["title"], font=tuple(self.fonts["title"]))
+        self.version = tk.Label(self.root, text=self.data["version"], font=tuple(self.fonts["notes"]))
+        
         # Placing Widgets
         # Labels
         self.title.place(x=25, y=25, width=550, height=50)

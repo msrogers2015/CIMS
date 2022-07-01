@@ -6,3 +6,19 @@ CREATE TABLE employees (
     salt TEXT
 );
 
+CREATE TABLE materials (
+	mid PRIMARY_KEY TEXT,
+	name TEXT,
+	health INTEGER,
+	flammibility INTEGER,
+	reactivity INTEGER,
+	ppe TEXT,
+	vender  TEXT,
+	system TEXT,
+	weight INTEGER,
+	cost INTEGER,
+	reorder INTEGER,
+	low_stock INTEGER,
+	lvalue REAL,
+	avalue REAL,
+	bvalue REAL);
